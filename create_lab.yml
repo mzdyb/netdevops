@@ -11,7 +11,7 @@
         repo: "{{ labhost.remote_repo_path }}"
         dest: "{{ labhost.local_repo_path }}"
         update: true
-        version: master
+#        version: master
 
     - name: Create lab
       ansible.builtin.command:
