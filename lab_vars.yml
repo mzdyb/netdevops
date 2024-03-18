@@ -1,5 +1,6 @@
 labhost:
   local_repo_path: /tmp/netdevops
-  lab_topology_dir: /tmp/netdevops/containerlab/topologies
+  lab_topology_dir: "{{ local_repo_path }}/containerlab/topologies"
   lab_topology: ceos.clab.yml
+  clab_path: "{{ lab_topology_dir }}/{{ lab_topology }}"
   remote_repo_path: https://github.com/mzdyb/netdevops.git
