@@ -1,6 +1,5 @@
 labhost:
   local_repo_path: /tmp/netdevops
   lab_topology_dir: /tmp/netdevops/containerlab/topologies
-  lab_topology:
-    - ceos.clab.yml
-  remote_repo_path: https://github.com/mzdyb/vmware_linux_automation.git
+  lab_topology: ceos.clab.yml
+  remote_repo_path: https://github.com/mzdyb/netdevops.git

@@ -16,7 +16,8 @@
     - name: Create lab
       ansible.builtin.command:
         cmd: clab deploy -t {{ clab_path }}
+      become: true
       register: output
       changed_when: output.rc != 0
       vars:
-        clab_path: "{{ lab_topology_dir }}/{{ lab_topology }}"
+        clab_path: "{{ labhost.lab_topology_dir }}/{{ labhost.lab_topology }}"
