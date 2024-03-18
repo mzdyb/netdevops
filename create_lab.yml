@@ -1,0 +1,22 @@
+---
+- name: Create testing environment
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - lab_vars.yml
+
+  tasks:
+    - name: Clone git repository with lab topology
+      ansible.builtin.git:
+        repo: "{{ labhost.remote_repo_path }}"
+        dest: "{{ labhost.local_repo_path }}"
+        update: true
+        version: master
+
+    - name: Create lab
+      ansible.builtin.command:
+        cmd: clab deploy -t {{ clab_path }}
+      register: output
+      changed_when: output.rc != 0
+      vars:
+        clab_path: "{{ lab_topology_dir }}/{{ lab_topology }}"

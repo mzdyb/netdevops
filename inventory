@@ -1,0 +1,5 @@
+[arista]
+clab-ceos_dev-ceos1
+clab-ceos_dev-ceos2
+
+labhost ansible_connection=local
