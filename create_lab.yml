@@ -11,11 +11,10 @@
         repo: "{{ labhost.remote_repo_path }}"
         dest: "{{ labhost.local_repo_path }}"
         update: true
-#        version: master
 
     - name: Create lab
       ansible.builtin.command:
-        cmd: clab deploy -t {{ labhost.clab_path }}
+        cmd: clab deploy -t "{{ lab_topology_dir }}/{{ lab_topology }}"
       become: true
       register: output
       changed_when: output.rc != 0

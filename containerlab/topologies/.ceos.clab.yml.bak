@@ -1,0 +1,16 @@
+name: ceos_dev
+
+topology:
+  nodes:
+    ceos1:
+      kind: arista_ceos
+      image: ceos:4.31.2F
+      mgmt-ipv4: 172.20.20.2
+
+    ceos2:
+      kind: arista_ceos
+      image: ceos:4.31.2F
+      mgmt-ipv4: 172.20.20.3
+
+  links:
+    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
