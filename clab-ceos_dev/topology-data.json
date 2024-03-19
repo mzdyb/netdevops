@@ -1,0 +1,95 @@
+{
+  "name": "ceos_dev",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-143980c9c69c",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "ceos1": {
+      "index": "0",
+      "shortname": "ceos1",
+      "longname": "clab-ceos_dev-ceos1",
+      "fqdn": "ceos1.ceos_dev.io",
+      "group": "",
+      "labdir": "/home/mzdyb/git/netdevops/clab-ceos_dev/ceos1",
+      "kind": "arista_ceos",
+      "image": "ceos:4.31.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:84:7b:d4",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-143980c9c69c",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/mzdyb/git/netdevops/clab-ceos_dev/ceos1",
+        "clab-node-name": "ceos1",
+        "clab-node-type": "",
+        "clab-topo-file": "/tmp/netdevops/containerlab/topologies/ceos.clab.yml",
+        "containerlab": "ceos_dev"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ceos2": {
+      "index": "1",
+      "shortname": "ceos2",
+      "longname": "clab-ceos_dev-ceos2",
+      "fqdn": "ceos2.ceos_dev.io",
+      "group": "",
+      "labdir": "/home/mzdyb/git/netdevops/clab-ceos_dev/ceos2",
+      "kind": "arista_ceos",
+      "image": "ceos:4.31.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:8c:13:c1",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-143980c9c69c",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/mzdyb/git/netdevops/clab-ceos_dev/ceos2",
+        "clab-node-name": "ceos2",
+        "clab-node-type": "",
+        "clab-topo-file": "/tmp/netdevops/containerlab/topologies/ceos.clab.yml",
+        "containerlab": "ceos_dev"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "ceos1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:ef:3a:d8",
+        "peer": "z"
+      },
+      "z": {
+        "node": "ceos2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:d4:bc:71",
+        "peer": "a"
+      }
+    }
+  ]
+}
