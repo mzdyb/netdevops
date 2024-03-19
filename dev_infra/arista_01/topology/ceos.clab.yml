@@ -14,4 +14,3 @@ topology:
 
   links:
     - endpoints: ["ceos1:eth1", "ceos2:eth1"]
-    - endpoints: ["ceos1:eth2", "ceos2:eth2"]

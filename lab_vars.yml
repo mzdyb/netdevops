@@ -1,5 +1,6 @@
 labhost:
   remote_repo_path: https://github.com/mzdyb/netdevops.git
   local_repo_path: /tmp/netdevops
-  local_repo_topology_path: /tmp/netdevops/containerlab/topologies
+  local_repo_topology_path: /tmp/netdevops/dev_infra/arista_01/topology
   topology_file: ceos.clab.yml
+  clab_labdir: /tmp/clab

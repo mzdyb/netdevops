@@ -6,20 +6,22 @@
     - lab_vars.yml
 
   tasks:
-    - name: Clone git repository with lab topology
+    - name: Clone git repository
       ansible.builtin.git:
         repo: "{{ labhost.remote_repo_path }}"
         dest: "{{ labhost.local_repo_path }}"
         update: true
 
-    - name: Create lab
+    - name: Create dev infrastructure
       ansible.builtin.command:
         cmd: clab deploy --reconfigure -t "{{ labhost.local_repo_topology_path }}/{{ labhost.topology_file }}"
       become: true
+      environment:
+        CLAB_LABDIR_BASE: "{{ labhost.clab_labdir }}"
       register: output
-      changed_when: output.rc != 0
+      changed_when: clab_deploy_output.rc != 0
 
 
-    - name: Debug
+    - name: Show dev infrastructure
       ansible.builtin.debug:
-        msg: "{{ output.stdout_lines }}"
+        msg: "{{ clab_deploy_output.stdout_lines }}"
