@@ -18,7 +18,7 @@
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ labhost.clab_labdir }}"
-      register: output
+      register: clab_deploy_output
       changed_when: clab_deploy_output.rc != 0
 
 
