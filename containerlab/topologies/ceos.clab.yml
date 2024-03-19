@@ -5,12 +5,12 @@ topology:
     ceos1:
       kind: arista_ceos
       image: ceos:4.31.2F
-      mgmt-ipv4: 172.20.20.2
+      mgmt-ipv4: 172.20.20.3
 
     ceos2:
       kind: arista_ceos
       image: ceos:4.31.2F
-      mgmt-ipv4: 172.20.20.3
+      mgmt-ipv4: 172.20.20.4
 
   links:
-    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
+    - endpoints: ["ceos1:eth2", "ceos2:eth2"]

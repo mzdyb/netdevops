@@ -14,7 +14,7 @@
 
     - name: Create lab
       ansible.builtin.command:
-        cmd: clab deploy -t "{{ lab_topology_dir }}/{{ lab_topology }}"
+        cmd: clab deploy --reconfigure -t "{{ labhost.lab_topology_dir }}/{{ labhost.lab_topology }}"
       become: true
       register: output
       changed_when: output.rc != 0
@@ -22,4 +22,4 @@
 
     - name: Debug
       ansible.builtin.debug:
-        msg: "{{ output }}"
+        msg: "{{ output.stdout_lines }}"
