@@ -14,7 +14,7 @@
 
     - name: Create lab
       ansible.builtin.command:
-        cmd: clab deploy --reconfigure -t "{{ labhost.lab_topology_dir }}/{{ labhost.lab_topology }}"
+        cmd: clab deploy --reconfigure -t "{{ labhost.local_repo_topology_path }}/{{ labhost.topology_file }}"
       become: true
       register: output
       changed_when: output.rc != 0
