@@ -1,6 +1,6 @@
 ---
-- name: Create testing environment
-  hosts: localhost
+- name: Create dev infrastructure
+  hosts: labhost
   gather_facts: false
   vars_files:
     - lab_vars.yml
@@ -12,9 +12,9 @@
         dest: "{{ labhost.local_repo_path }}"
         update: true
 
-    - name: Create dev infrastructure
+    - name: Deploy dev topology
       ansible.builtin.command:
-        cmd: clab deploy --reconfigure -t "{{ labhost.local_repo_topology_path }}/{{ labhost.topology_file }}"
+        cmd: clab deploy --reconfigure -t "{{ labhost.local_repo_lab_path }}/{{ labhost.lab_name }}/{{ labhost.topology_file }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ labhost.clab_labdir }}"

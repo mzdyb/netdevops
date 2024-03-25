@@ -2,4 +2,4 @@
 clab-ceos_dev-ceos1
 clab-ceos_dev-ceos2
 
-labhost ansible_connection=local
+labhost ansible_host=192.168.122.1 ansible_user=ansible
