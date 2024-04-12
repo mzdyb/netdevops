@@ -1,0 +1,25 @@
+# host:
+#   remote_repo_path: https://github.com/mzdyb/netdevops.git
+#   local_repo_path: /tmp/netdevops
+#   local_repo_lab_path: /tmp/netdevops/dev_infra
+#   network_infrastructure: arista_01
+#   topology_file: ceos.clab.yml
+#   clab_labdir: /tmp/clab
+
+git:
+  repo_url: https://github.com/mzdyb/netdevops.git
+  dest_path: /tmp/netdevops
+
+infra:
+  dev:
+    path: "{{ git.dest_path }}/dev_infra"
+    topology: arista01
+    topology_file: ceos.clab.yml
+  prod:
+    path: "{{ git.dest_path }}/prod_infra"
+    topology: arista01
+    topology_file: ceos.clab.yml
+
+clab:
+  labdir: /tmp/clab
+  action: "deploy" #Default action to deploy network topology, use 'destroy' to destroy topology

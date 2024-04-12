@@ -1,0 +1,32 @@
+---
+- name: Create network infrastructure
+  hosts: labhost
+  gather_facts: false
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Check action parameter
+      ansible.builtin.fail:
+        msg: "Action must be deploy or destroy"
+      when: action not in ["deploy", "destroy"]
+
+    - name: Clone git repository
+      ansible.builtin.git:
+        repo: "{{ git.repo_url }}"
+        dest: "{{ git.dest_path }}"
+        update: true
+
+    - name: Conditionally deploy or destroy network infrastructure
+      ansible.builtin.command:
+        cmd: "{{ lookup('template', 'clab_command.j2') }}"
+      become: true
+      environment:
+        CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+      register: clab_output
+      changed_when: clab_output.rc != 0
+
+
+    - name: Show network infrastructure
+      ansible.builtin.debug:
+        msg: "{{ clab_output.stdout_lines }}"
