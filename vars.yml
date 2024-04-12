@@ -1,11 +1,3 @@
-# host:
-#   remote_repo_path: https://github.com/mzdyb/netdevops.git
-#   local_repo_path: /tmp/netdevops
-#   local_repo_lab_path: /tmp/netdevops/dev_infra
-#   network_infrastructure: arista_01
-#   topology_file: ceos.clab.yml
-#   clab_labdir: /tmp/clab
-
 git:
   repo_url: https://github.com/mzdyb/netdevops.git
   dest_path: /tmp/netdevops
