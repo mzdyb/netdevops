@@ -14,4 +14,3 @@ infra:
 
 clab:
   labdir: /tmp/clab
-  action: "deploy" #Default action to deploy network topology, use 'destroy' to destroy topology

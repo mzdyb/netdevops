@@ -2,14 +2,16 @@
 - name: Create network infrastructure
   hosts: labhost
   gather_facts: false
+  vars:
+    mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
   vars_files:
     - vars.yml
 
   tasks:
-    - name: Check action parameter
+    - name: Check mode parameter
       ansible.builtin.fail:
-        msg: "Action must be deploy or destroy"
-      when: clab.action not in ["deploy", "destroy"]
+        msg: "Mode must be deploy or destroy"
+      when: mode not in ["deploy", "destroy"]
 
     - name: Clone git repository
       ansible.builtin.git:
@@ -24,7 +26,7 @@
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
       register: clab_output
-      changed_when: clab_output.rc != 0
+      changed_when: clab_output.stderr | regex_search('(Adding|Removing) containerlab')
 
 
     - name: Show network infrastructure
