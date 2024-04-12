@@ -9,7 +9,7 @@
     - name: Check action parameter
       ansible.builtin.fail:
         msg: "Action must be deploy or destroy"
-      when: "{{ clab.action }}" not in ["deploy", "destroy"]
+      when: "{{ clab.action }} not in ["deploy", "destroy"]""
 
     - name: Clone git repository
       ansible.builtin.git:
