@@ -1,4 +1,4 @@
-{% if action == 'deploy' %}
+{% if mode == 'deploy' %}
 clab deploy --reconfigure -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
 {% else %}
 clab destroy -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
