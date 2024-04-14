@@ -37,6 +37,17 @@
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
       register: clab_output
       changed_when: "'Adding containerlab' in clab_output.stderr"
+      when: mode == 'deploy'
+
+    - name: Remove network infrastructure
+      ansible.builtin.command:
+        cmd: clab destroy -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
+      become: true
+      environment:
+        CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+      register: clab_output
+      changed_when: "'Removing containerlab' in clab_output.stderr"
+      when: mode == 'destroy'
 
 
     - name: Show network infrastructure
