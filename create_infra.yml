@@ -19,19 +19,13 @@
         dest: "{{ git.dest_path }}"
         update: true
 
-    # - name: Conditionally deploy or destroy network infrastructure
-    #   ansible.builtin.command:
-    #     cmd: "{{ lookup('template', 'clab_command.j2') }}"
-    #   become: true
-    #   environment:
-    #     CLAB_LABDIR_BASE: "{{ clab.labdir }}"
-    #   register: clab_output
-    #   changed_when: clab_output.stderr | regex_search('(Adding|Removing) containerlab')
-
-
+    - name: Survey
+      ansible.builtin.set_fact:
+        survey: infra.dev.topology_file
+        
     - name: Deploy network infrastructure
       ansible.builtin.command:
-        cmd: clab deploy --reconfigure -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
+        cmd: clab deploy --reconfigure -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ survey }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
@@ -41,7 +35,7 @@
 
     - name: Remove network infrastructure
       ansible.builtin.command:
-        cmd: clab destroy -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
+        cmd: clab destroy -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ survey }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
@@ -49,7 +43,14 @@
       changed_when: "'Removing containerlab' in clab_output.stderr"
       when: mode == 'destroy'
 
+    - name: Collect network infrastructure
+      ansible.builtin.command:
+        cmd: clab inspect --all
+      become: true
+      # environment:
+      #   CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+      register: clab_inspect
 
     - name: Show network infrastructure
       ansible.builtin.debug:
-        msg: "{{ clab_output.stdout_lines }}"
+        var: clab_inspect.stdout_lines
