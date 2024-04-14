@@ -19,14 +19,24 @@
         dest: "{{ git.dest_path }}"
         update: true
 
-    - name: Conditionally deploy or destroy network infrastructure
+    # - name: Conditionally deploy or destroy network infrastructure
+    #   ansible.builtin.command:
+    #     cmd: "{{ lookup('template', 'clab_command.j2') }}"
+    #   become: true
+    #   environment:
+    #     CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+    #   register: clab_output
+    #   changed_when: clab_output.stderr | regex_search('(Adding|Removing) containerlab')
+
+
+    - name: Deploy network infrastructure
       ansible.builtin.command:
-        cmd: "{{ lookup('template', 'clab_command.j2') }}"
+        cmd: clab deploy --reconfigure -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
       register: clab_output
-      changed_when: clab_output.stderr | regex_search('(Adding|Removing) containerlab')
+      changed_when: "'Adding containerlab' in clab_output.stderr"
 
 
     - name: Show network infrastructure
