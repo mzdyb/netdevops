@@ -4,6 +4,7 @@
   gather_facts: false
   vars:
     mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
+    topology_path: "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
   vars_files:
     - vars.yml
 
@@ -19,13 +20,10 @@
         dest: "{{ git.dest_path }}"
         update: true
 
-    - name: Survey
-      ansible.builtin.set_fact:
-        survey: infra.dev.topology_file
         
     - name: Deploy network infrastructure
       ansible.builtin.command:
-        cmd: clab deploy --reconfigure -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ survey }}"
+        cmd: clab deploy --reconfigure -t "{{ topology_path }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
@@ -35,7 +33,7 @@
 
     - name: Remove network infrastructure
       ansible.builtin.command:
-        cmd: clab destroy -t "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ survey }}"
+        cmd: clab destroy -t "{{ topology_path }}"
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ clab.labdir }}"
