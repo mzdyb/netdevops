@@ -8,6 +8,7 @@
   vars_files:
     - vars.yml
 
+
   tasks:
     - name: Check mode parameter
       ansible.builtin.fail:
@@ -19,7 +20,6 @@
         repo: "{{ git.repo_url }}"
         dest: "{{ git.dest_path }}"
         update: true
-
         
     - name: Deploy network infrastructure
       ansible.builtin.command:
@@ -45,8 +45,6 @@
       ansible.builtin.command:
         cmd: clab inspect --all
       become: true
-      # environment:
-      #   CLAB_LABDIR_BASE: "{{ clab.labdir }}"
       register: clab_inspect
 
     - name: Show network infrastructure
