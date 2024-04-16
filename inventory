@@ -6,15 +6,15 @@ ungrouped:
       ansible_user: ansible
 dev_arista01:
   hosts:
-    clab-dev_arista01-rtr1:
+    clab-dev_arista01-a01-dev-rtr1:
       ansible_host: 172.20.20.2
-    clab-dev_arista01-rtr2:
+    clab-dev_arista01-a01-dev-rtr2:
       ansible_host: 172.20.20.3
 prod_arista01:
   hosts:
-    clab-prod_arista01-rtr1:
+    clab-prod_arista01-a01-prod-rtr1:
       ansible_host: 10.16.10.13
-    clab-prod_arista01-rtr2:
+    clab-prod_arista01-a01-prod-rtr2:
       ansible_host: 10.16.10.13
 arista:
   children:

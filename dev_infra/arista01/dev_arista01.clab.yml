@@ -2,12 +2,12 @@ name: dev_arista01
 
 topology:
   nodes:
-    rtr1:
+    a01-dev-rtr1:
       kind: arista_ceos
       image: ceos:4.31.2F
       mgmt-ipv4: 172.20.20.2
 
-    rtr2:
+    a01-dev-rtr2:
       kind: arista_ceos
       image: ceos:4.31.2F
       mgmt-ipv4: 172.20.20.3
