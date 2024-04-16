@@ -13,4 +13,4 @@ topology:
       mgmt-ipv4: 172.20.20.3
 
   links:
-    - endpoints: ["rtr1:eth1", "rtr2:eth1"]
+    - endpoints: ["a01-dev-rtr1:eth1", "a01-dev-rtr2:eth1"]
