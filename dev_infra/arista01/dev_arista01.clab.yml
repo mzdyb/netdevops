@@ -2,15 +2,15 @@ name: dev_arista01
 
 topology:
   nodes:
-    ceos1:
+    rtr1:
       kind: arista_ceos
       image: ceos:4.31.2F
       mgmt-ipv4: 172.20.20.2
 
-    ceos2:
+    rtr2:
       kind: arista_ceos
       image: ceos:4.31.2F
       mgmt-ipv4: 172.20.20.3
 
   links:
-    - endpoints: ["ceos1:eth1", "ceos2:eth1"]
+    - endpoints: ["rtr1:eth1", "rtr2:eth1"]
