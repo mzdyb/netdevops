@@ -1,26 +1,26 @@
 ---
-- name: Create network infrastructure
+- name: Manage network infrastructure with clab
   hosts: labhost
   gather_facts: false
   vars:
     mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
-    topology_path: "{{ infra.dev.path }}/{{ infra.dev.topology }}/{{ infra.dev.topology_file }}"
+    topology_path: "{{ git.dest_path }}/dev_infra/arista01/dev_arista01.clab.yml"
   vars_files:
     - vars.yml
 
 
   tasks:
-    - name: Check mode parameter
-      ansible.builtin.fail:
-        msg: "Mode must be deploy or destroy"
-      when: mode not in ["deploy", "destroy"]
+    - name: Validate mode parameter
+      ansible.builtin.assert:
+        that: mode in ["deploy", "destroy"]
+        fail_msg: "Mode must be deploy or destroy"
 
     - name: Clone git repository
       ansible.builtin.git:
         repo: "{{ git.repo_url }}"
         dest: "{{ git.dest_path }}"
         update: true
-        
+
     - name: Deploy network infrastructure
       ansible.builtin.command:
         cmd: clab deploy --reconfigure -t "{{ topology_path }}"
@@ -46,6 +46,7 @@
         cmd: clab inspect --all
       become: true
       register: clab_inspect
+      changed_when: clab_inspect.rc != 0
 
     - name: Show network infrastructure
       ansible.builtin.debug:

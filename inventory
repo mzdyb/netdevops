@@ -1,9 +1,28 @@
+---
 ungrouped:
   hosts:
     labhost:
-
-arista:
+      ansible_host: 192.168.122.110
+      ansible_user: ansible
+dev_arista01:
   hosts:
     clab-ceos_dev-ceos1:
+      ansible_host: 10.16.10.13
     clab-ceos_dev-ceos2:
-    clab-EVPN-Overlaid-leaf1:
+      ansible_host: 10.16.10.13
+prod_arista01:
+  hosts:
+    clab-ceos_prod-ceos1:
+      ansible_host: 10.16.10.13
+    clab-ceos_prod-ceos2:
+      ansible_host: 10.16.10.13
+arista:
+  children:
+    dev_arista01:
+    prod_arista01:
+  vars:
+    ansible_network_os: arista.eos.oes
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_user: admin
+    ansible_become: true
+    ansible_become_method: enable

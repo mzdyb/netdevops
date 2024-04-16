@@ -4,7 +4,7 @@ ansible-navigator:
     config:
       path: ansible.cfg
   execution-environment:
-    image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+    image: hub.rh.lab/ee-arista:latest
     pull:
       policy: missing
   playbook-artifact:
