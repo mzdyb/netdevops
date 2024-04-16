@@ -1,0 +1,42 @@
+---
+version: 3
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--ignore-certs" # Ansible Builder doesn't support --ignore-certs, whereas the ansible-galaxy command supports this option
+
+additional_build_files:
+  - src: files/ansible.cfg
+    dest: configs
+
+additional_build_steps:
+  prepend_galaxy:
+    - ADD _build/configs/ansible.cfg ~/.ansible.cfg
+
+dependencies:
+  galaxy:
+    collections:
+      - name: arista.avd
+      - name: arista.eos
+  python:
+    - netaddr>=0.7.19
+    - Jinja2>=3.0.0
+    - treelib>=1.5.5
+    - cvprac>=1.3.1
+    - jsonschema>=4.5.1,<4.18
+    - requests>=2.27.0
+    - PyYAML>=6.0.0
+    - md-toc>=7.1.0
+    - deepmerge>=1.1.0
+    - cryptography>=38.0.4
+    - aristaproto>=0.1.1
+  system:
+    - python3 >=3.9
+  ansible_core:
+    package_pip: ansible-core>=2.14.0

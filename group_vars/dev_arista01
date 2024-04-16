@@ -1,0 +1,4 @@
+---
+infra_path: "{{ git.dest_path }}/dev_infra/arista01"
+topology_file: ceos.clab.yml
+config_template: "{{ ansible_hostname }}/templates/{{ ansible_hostname }}.j2"

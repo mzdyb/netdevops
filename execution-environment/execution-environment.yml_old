@@ -1,0 +1,15 @@
+---
+version: 1
+ 
+build_arg_defaults:
+#  EE_BASE_IMAGE: 'hub.rh.lab/ee-supported-rhel8:latest'
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '--ignore-certs'
+  EE_BASE_IMAGE: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+#Ansible Builder doesn't support --ignore-certs, whereas the ansible-galaxy command supports this option
+
+ansible_config: 'ansible.cfg'
+
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+#  system: bindep.txt 
