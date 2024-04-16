@@ -5,9 +5,6 @@
   vars:
     mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
     topology_path: "{{ git.dest_path }}/dev_infra/arista01/dev_arista01.clab.yml"
-  vars_files:
-    - vars.yml
-
 
   tasks:
     - name: Validate mode parameter
