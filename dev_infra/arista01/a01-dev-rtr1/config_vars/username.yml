@@ -1,0 +1,14 @@
+usernames:
+  - name: admin
+    privilege: 15
+    role: network-admin
+    secret_sha512: $6$m0JFrT5Wd2pjIPbq$droNyINpRvctdXC.6HL/lmD6rI6zcKDvWNfJBFb.MhclN.xzBZ4xP6mXKxs7Y2KGC9VUnVSqmAMypxcQwrInY1
+
+  - name: user1
+    privilege: 15
+    role: network-operator
+    secret_sha512: $6$gU1NNlsh1TKDLzCs$SwbPQgajzA.sb4Wt.CnY/IWmeAqvmI7nCUPo/kzShYBLIMEBlIp/1tjBRt9WKdyMKEi.CFPJIUE3CBkL0s01x/
+
+  - name: user2
+    privilege: 15
+    secret_sha512: $6$bapxRICY4mUkV0bv$PcWTwlM9SopJQwPJvbpYTKXanaCtio7R1zuHBR1AzdIDJpFRlH3ENKZRUFigPzv3IKSvuoy937Lu.HpGm3EP./

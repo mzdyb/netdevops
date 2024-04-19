@@ -1,18 +1,21 @@
 ---
+
 - name: Configure network devices
   hosts: a01-dev-rtr1
   gather_facts: false
-  vars:
-    config_path: "{{ infra_path }}/{{ inventory_hostname }}/templates/{{ inventory_hostname }}.j2"
 
   tasks:
+    - name: Include configuration variables for {{ inventory_hostname }}
+      ansible.builtin.include_vars:
+        dir: "{{ config_vars }}"
+
     - debug:
-        var: config_path
+        var: bgp.as
 
     - name: Apply configuration from SoT
       arista.eos.eos_config:
-        src: "{{ config_path }}"
-        replace: config
+        src: "{{ config_template }}"
+        # replace: config
         save_when: modified
       #   backup: "{{ eos_config_deploy_eapi_pre_running_config_backup }}"
       #   backup_options:

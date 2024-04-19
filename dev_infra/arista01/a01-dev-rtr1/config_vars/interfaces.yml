@@ -1,0 +1,5 @@
+interfaces:
+- name: Ethernet01
+  description: to-a01-dev-rtr2
+  ipv4_address: 11.0.0.1/24
+  shutdown: true

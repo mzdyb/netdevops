@@ -4,7 +4,8 @@
   gather_facts: false
   vars:
     mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
-    topology_path: "{{ git.dest_path }}/dev_infra/arista01/dev_arista01.clab.yml"
+    topology_path: "/tmp/netdevops/dev_infra/arista01/dev_arista01.clab.yml"
+    labdir: /tmp/clab
 
   tasks:
     - name: Validate mode parameter
@@ -12,18 +13,12 @@
         that: mode in ["deploy", "destroy"]
         fail_msg: "Mode must be deploy or destroy"
 
-    - name: Clone git repository
-      ansible.builtin.git:
-        repo: "{{ git.repo_url }}"
-        dest: "{{ git.dest_path }}"
-        update: true
-
     - name: Deploy network infrastructure
       ansible.builtin.command:
         cmd: clab deploy --reconfigure -t "{{ topology_path }}"
       become: true
       environment:
-        CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+        CLAB_LABDIR_BASE: "{{ labdir }}"
       register: clab_output
       changed_when: "'Adding containerlab' in clab_output.stderr"
       when: mode == 'deploy'
@@ -33,7 +28,7 @@
         cmd: clab destroy -t "{{ topology_path }}"
       become: true
       environment:
-        CLAB_LABDIR_BASE: "{{ clab.labdir }}"
+        CLAB_LABDIR_BASE: "{{ labdir }}"
       register: clab_output
       changed_when: "'Removing containerlab' in clab_output.stderr"
       when: mode == 'destroy'

@@ -1,0 +1,18 @@
+{% if usernames is defined %}
+!
+{% for username in usernames %}
+{%   set username_command = "username " ~ username.name %}
+{%   if username.privilege is defined %}
+{%     set username_command = username_command ~ " privilege " ~ username.privilege %}
+{%   endif %}
+{%   if username.role is defined %}
+{%     set username_command = username_command ~ " role " ~ username.role %}
+{%   endif %}
+{%   if username.secret_sha512 is defined %}
+{%     set username_command = username_command ~ " secret sha512 " ~ username.secret_sha512  %}
+{%   elif username.no_password is defined %}
+{%     set username_command = username_command ~ " nopassword" %}
+{%   endif %}
+{{ username_command }}
+{% endfor %}
+{% endif %}

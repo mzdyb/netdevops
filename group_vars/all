@@ -1,4 +1,0 @@
----
-git:
-  repo_url: https://github.com/mzdyb/netdevops.git
-  dest_path: /tmp/netdevops
