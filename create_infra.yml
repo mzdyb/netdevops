@@ -31,7 +31,7 @@
 
     - name: Remove network infrastructure
       ansible.builtin.command:
-        cmd: clab destroy -t "{{ topology_path }}"
+        cmd: clab destroy -t /tmp/{{ topology_path }}
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ labdir }}"
