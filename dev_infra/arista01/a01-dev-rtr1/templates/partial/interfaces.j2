@@ -10,8 +10,8 @@ interface {{ interface.name }}
 {%     endif %}
 {%     if interface.shutdown %}
    shutdown
-{%     else %}
-   no shutdown
+{# {%     else %}
+   no shutdown #}
 {%     endif %}
 {%   endif %}
 {% endfor %}
