@@ -35,6 +35,6 @@
   tasks:
     - name: Copy backups from EE to {{ inventory_hostname }}
       ansible.builtin.copy:
-        src: /tmp/backups/
+        src: /tmp/backupss/
         dest: /tmp/backups
         mode: preserve
