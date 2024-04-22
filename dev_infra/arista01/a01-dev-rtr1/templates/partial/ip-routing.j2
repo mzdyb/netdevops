@@ -1,8 +1,8 @@
 {% if ip_routing is defined %}
-{%   if ip_routing == 'enabled' %}
+{%   if ip_routing %}
 !
 ip routing
-{%   elif ip_routing == 'disabled' %}
+{%   else %}
 !
 no ip routing
 {%   endif %}

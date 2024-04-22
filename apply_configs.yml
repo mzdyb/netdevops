@@ -9,16 +9,32 @@
       ansible.builtin.include_vars:
         dir: "{{ config_vars }}"
 
-    - debug:
-        var: bgp.as
-
     - name: Apply configuration from SoT
       arista.eos.eos_config:
         src: "{{ config_template }}"
-        # replace: config
+        replace: config
         save_when: modified
-      #   backup: "{{ eos_config_deploy_eapi_pre_running_config_backup }}"
-      #   backup_options:
-      #     filename: "{{ pre_running_config_backup_filename }}"
-      #     dir_path: "{{ pre_running_config_backup_dir }}"
-      # notify: "backup config"
+        backup: true
+        backup_options:
+          dir_path: /tmp/backups/{{ inventory_hostname }}/pre_changes
+      notify: "backup post_changes"
+
+  handlers:
+    - name: Backup running config
+      arista.eos.eos_config:
+        backup: true
+        backup_options:
+          dir_path: /tmp/backups/{{ inventory_hostname }}/post_changes
+      listen: "backup post_changes"
+
+
+- name: Copy backups
+  hosts: labhost
+  gather_facts: false
+
+  tasks:
+    - name: Copy backups from EE to {{ inventory_hostname }}
+      ansible.builtin.copy:
+        src: /tmp/backups/
+        dest: /tmp/backups
+        mode: preserve

@@ -1,13 +1,10 @@
 ---
 bgp:
   as: "64512"
-  router_id: 10.255.128.11
+  router_id: 172.16.0.1
   neighbors:
     - ip_address: 10.255.255.105
-      remote_as: "65201"
+      remote_as: "64513"
       description: ceos-rtr2
-    - ip_address: 10.255.255.109
-      remote_as: "65201"
-      description: dc2-leaf1b_Ethernet1
   networks:
     - prefix: 10.0.0.0/24

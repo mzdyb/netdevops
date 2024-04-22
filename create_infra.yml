@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     mode: "deploy" # Default action to deploy network topology, use 'destroy' to destroy topology
-    topology_path: "/tmp/netdevops/dev_infra/arista01/dev_arista01.clab.yml"
+    topology_path: "dev_infra/arista01/dev_arista01.clab.yml"
     labdir: /tmp/clab
 
   tasks:
@@ -13,9 +13,15 @@
         that: mode in ["deploy", "destroy"]
         fail_msg: "Mode must be deploy or destroy"
 
+    - name: Copy topology file
+      ansible.builtin.copy:
+        src: "{{ topology_path }}"
+        dest: /tmp/{{ topology_path }}/
+        mode: preserve
+
     - name: Deploy network infrastructure
       ansible.builtin.command:
-        cmd: clab deploy --reconfigure -t "{{ topology_path }}"
+        cmd: clab deploy --reconfigure -t /tmp/{{ topology_path }}
       become: true
       environment:
         CLAB_LABDIR_BASE: "{{ labdir }}"
