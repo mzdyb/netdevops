@@ -12,7 +12,7 @@
     - name: Apply configuration from SoT
       arista.eos.eos_config:
         src: "{{ config_template }}"
-        # replace: config
+        replace: config
         save_when: modified
         diff_against: running
         backup: true
