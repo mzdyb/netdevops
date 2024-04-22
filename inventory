@@ -4,7 +4,8 @@ ungrouped:
     labhost:
       ansible_host: 192.168.122.110
       ansible_user: ansible
-      ansible_password: redhat # password might be encrypted with ansuble-vault or stored as a credential on AAP
+      ansible_password: redhat # passwords should be encrypted with ansuble-vault or stored as a credential on AAP
+      become_password: redhat
 dev_arista01:
   hosts:
     a01-dev-rtr1:
