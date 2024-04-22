@@ -11,5 +11,5 @@ interfaces:
   shutdown: false
 
 - name: Loopback0
-  ipv4_address: 172.16.0.1/32
+  ipv4_address: 172.16.0.10/32
   shutdown: false
