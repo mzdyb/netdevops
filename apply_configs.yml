@@ -18,7 +18,11 @@
         backup: true
         backup_options:
           dir_path: /tmp/backups/{{ inventory_hostname }}/pre_changes
+      register: apply_output
       notify: "backup post_changes"
+
+    - debug:
+        var: apply_output
 
   handlers:
     - name: Backup running config
