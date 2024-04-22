@@ -14,6 +14,7 @@
         src: "{{ config_template }}"
         replace: config
         save_when: modified
+        diff_against: running
         backup: true
         backup_options:
           dir_path: /tmp/backups/{{ inventory_hostname }}/pre_changes
