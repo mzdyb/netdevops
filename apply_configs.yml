@@ -26,7 +26,7 @@
         - copy backup
         - show configuration changes
 
-    - name: Show configuration changes
+    - name: Inform if no configuration changes introduced
       ansible.builtin.debug:
         msg: "No configuration changes introduced"
       when: not config_output.changed
