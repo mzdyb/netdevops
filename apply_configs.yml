@@ -9,7 +9,7 @@
       ansible.builtin.include_vars:
         dir: "{{ config_vars }}"
 
-    - name: Backup running config pre changes
+    - name: Backup running config before changes
       arista.eos.eos_config:
         backup: true
         backup_options:
@@ -32,7 +32,7 @@
       when: not config_output.changed
 
   handlers:
-    - name: Backup running config post changes
+    - name: Backup running config after changes
       arista.eos.eos_config:
         backup: true
         backup_options:
@@ -50,4 +50,3 @@
       ansible.builtin.debug:
         msg: "{{ config_output.diff }}"
       listen: show configuration changes
-
