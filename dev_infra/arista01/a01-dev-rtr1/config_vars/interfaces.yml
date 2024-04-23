@@ -11,5 +11,5 @@ interfaces:
 - name: Management0
   description: mgmt
   ipv4_address: 172.20.20.2/24
-  ipv6_address: 2001:172:20:20::3/6
+  ipv6_address: 2001:172:20:20::3/64
   shutdown: false
