@@ -10,8 +10,9 @@ interface {{ interface.name }}
 {%     endif %}
 {%     if interface.shutdown %}
    shutdown
-{# {%     else %}
-   no shutdown #}
+{# 'no shutdown' not needed in "replace: config" mode so removed here for idempotency #}
+{# {%     else %} 
+   no shutdown #} 
 {%     endif %}
 {%   endif %}
 {% endfor %}

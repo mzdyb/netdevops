@@ -4,12 +4,12 @@ interfaces:
   ipv4_address: 10.0.0.1/24
   shutdown: false
 
+- name: Loopback0
+  ipv4_address: 172.16.0.10/32
+  shutdown: false
+
 - name: Management0
   description: mgmt
   ipv4_address: 172.20.20.2/24
   ipv6_address: 2001:172:20:20::3/6
-  shutdown: false
-
-- name: Loopback0
-  ipv4_address: 172.16.0.10/32
   shutdown: false
