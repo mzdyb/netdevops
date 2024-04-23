@@ -13,13 +13,13 @@
         that: mode in ["deploy", "destroy"]
         fail_msg: "Mode must be deploy or destroy"
 
-    - name: Copy topology file
+    - name: Copy topology file to {{ inventory_hostname }}
       ansible.builtin.copy:
         src: "{{ topology_path }}"
         dest: /tmp/{{ topology_path }}/
         mode: preserve
 
-    - name: Deploy network infrastructure
+    - name: Deploy network infrastructure on {{ inventory_hostname }}
       ansible.builtin.command:
         cmd: clab deploy --reconfigure -t /tmp/{{ topology_path }}
       become: true
@@ -29,7 +29,7 @@
       changed_when: "'Adding containerlab' in clab_output.stderr"
       when: mode == 'deploy'
 
-    - name: Remove network infrastructure
+    - name: Remove network infrastructure from {{ inventory_hostname }}
       ansible.builtin.command:
         cmd: clab destroy -t /tmp/{{ topology_path }}
       become: true
@@ -39,13 +39,13 @@
       changed_when: "'Removing containerlab' in clab_output.stderr"
       when: mode == 'destroy'
 
-    - name: Collect network infrastructure
+    - name: Collect invormation about network infrastructures on {{ inventory_hostname }}
       ansible.builtin.command:
         cmd: clab inspect --all
       become: true
       register: clab_inspect
       changed_when: clab_inspect.rc != 0
 
-    - name: Show network infrastructure
+    - name: Show network infrastructures on {{ inventory_hostname }}
       ansible.builtin.debug:
         var: clab_inspect.stdout_lines
