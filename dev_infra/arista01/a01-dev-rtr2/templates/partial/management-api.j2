@@ -1,0 +1,12 @@
+{# Explicit configuration definition, config vars and rendering logic can be added if needed #}
+{% raw -%}
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+{% endraw %}

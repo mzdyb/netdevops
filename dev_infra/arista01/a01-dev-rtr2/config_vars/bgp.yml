@@ -1,0 +1,10 @@
+---
+bgp:
+  as: "64513"
+  router_id: 172.16.0.2
+  neighbors:
+    - ip_address: 10.0.0.1
+      remote_as: "64512"
+      description: a01-dev-rtr1
+  networks:
+    - prefix: 192.168.2.0/24

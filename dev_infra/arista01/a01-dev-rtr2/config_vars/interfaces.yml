@@ -1,15 +1,15 @@
 interfaces:
 - name: Ethernet1
   description: to-a01-dev-rtr2
-  ipv4_address: 10.0.0.1/30
+  ipv4_address: 10.0.0.1/24
   shutdown: false
 
 - name: Loopback0
-  ipv4_address: 172.16.0.1/32
+  ipv4_address: 172.16.0.200/32
   shutdown: false
 
 - name: Management0
   description: mgmt
   ipv4_address: 172.20.20.2/24
-  ipv6_address: 2001:172:20:20::2/64
+  ipv6_address: 2001:172:20:20::3/64
   shutdown: false

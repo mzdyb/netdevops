@@ -1,0 +1,20 @@
+{% if bgp.as is defined %}
+!
+router bgp {{ bgp.as }}
+{%   if bgp.router_id is defined %}
+   router-id {{ bgp.router_id }}
+{%   endif %}
+{% for neighbor in bgp.neighbors %}
+{%   if neighbor.ip_address is defined and  neighbor.remote_as is defined %}
+   neighbor {{ neighbor.ip_address }} remote-as {{ neighbor.remote_as }}
+{%   endif %}
+{%   if neighbor.ip_address is defined and neighbor.description is defined %}
+   neighbor {{ neighbor.ip_address }} description {{ neighbor.description }}
+{%   endif %}
+{% endfor %}
+{% for network in bgp.networks %}
+{%   if network.prefix is defined %}
+   network {{ network.prefix }}
+{%   endif %}
+{% endfor %}
+{% endif %}

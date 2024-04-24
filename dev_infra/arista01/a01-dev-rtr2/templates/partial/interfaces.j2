@@ -1,0 +1,18 @@
+{% for interface in interfaces %}
+{%   if interface.name is defined %}
+!
+interface {{ interface.name }}
+{%     if interface.ipv4_address is defined %}
+   ip address {{ interface.ipv4_address }}
+{%     endif %}
+{%     if interface.ipv6_address is defined %}
+   ipv6 address {{ interface.ipv6_address }}
+{%     endif %}
+{%     if interface.shutdown %}
+   shutdown
+{# 'no shutdown' not needed in "replace: config" mode so removed here for idempotency #}
+{# {%     else %} 
+   no shutdown #} 
+{%     endif %}
+{%   endif %}
+{% endfor %}

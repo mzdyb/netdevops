@@ -3,8 +3,8 @@ bgp:
   as: "64512"
   router_id: 172.16.0.1
   neighbors:
-    - ip_address: 10.255.255.105
+    - ip_address: 10.0.0.2
       remote_as: "64513"
-      description: ceos-rtr2
+      description: a01-dev-rtr2
   networks:
-    - prefix: 10.0.0.0/24
+    - prefix: 192.168.2.0/24
