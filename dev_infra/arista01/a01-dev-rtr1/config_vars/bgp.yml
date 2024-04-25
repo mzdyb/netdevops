@@ -7,4 +7,4 @@ bgp:
       remote_as: "64513"
       description: a01-dev-rtr2
   networks:
-    - prefix: 192.168.2.0/24
+    - prefix: 192.168.1.0/24

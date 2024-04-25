@@ -2,6 +2,13 @@ interfaces:
 - name: Ethernet1
   description: to-a01-dev-rtr2
   ipv4_address: 10.0.0.1/30
+  switchport: false
+  shutdown: false
+
+- name: Ethernet2
+  description: to-a01-client1
+  ipv4_address: 192.168.1.1/24
+  switchport: false
   shutdown: false
 
 - name: Loopback0

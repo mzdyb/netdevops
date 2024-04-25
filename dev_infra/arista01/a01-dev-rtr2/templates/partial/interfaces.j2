@@ -2,6 +2,11 @@
 {%   if interface.name is defined %}
 !
 interface {{ interface.name }}
+{%     if interface.switchport is defined %}
+{%       if not interface.switchport %}
+   no switchport
+{%       endif %}
+{%     endif %}
 {%     if interface.ipv4_address is defined %}
    ip address {{ interface.ipv4_address }}
 {%     endif %}

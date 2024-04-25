@@ -1,7 +1,7 @@
 ---
 
 - name: Configure network devices
-  hosts: a01-dev-rtr1
+  hosts: dev_arista01
   gather_facts: false
 
   tasks:
@@ -48,5 +48,5 @@
 
     - name: Show configuration changes
       ansible.builtin.debug:
-        msg: "{{ config_output.diff }}"
+        msg: "{{ config_output.diff | to_json(indent=2) }}"
       listen: show configuration changes
