@@ -1,0 +1,39 @@
+name: dev_arista01
+
+topology:
+  nodes:
+    a01-dev-rtr1:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+      mgmt-ipv4: 172.20.20.2
+
+
+    a01-dev-rtr2:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+      mgmt-ipv4: 172.20.20.3
+
+    a01-client1:
+      kind: linux
+      image: wbitt/network-multitool:fedora
+      exec:
+        - ip addr add 192.168.1.2/24 dev eth1
+        - ip route add 192.168.2.0/24 via 192.168.1.1
+        - dnf install openssh-server -y
+        - systemctl start sshd
+        - useradd ansible
+
+    a01-client2:
+      kind: linux
+      image: wbitt/network-multitool:fedora
+      exec:
+        - ip addr add 192.168.2.2/24 dev eth1
+        - ip route add 192.168.1.0/24 via 192.168.2.1
+        - dnf install openssh-server -y
+        - systemctl start sshd
+        - useradd ansible
+
+  links:
+    - endpoints: ["a01-dev-rtr1:eth1", "a01-dev-rtr2:eth1"]
+    - endpoints: ["a01-dev-rtr1:eth2", "a01-client1:eth1"]
+    - endpoints: ["a01-dev-rtr2:eth2", "a01-client2:eth1"]

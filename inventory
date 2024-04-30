@@ -12,6 +12,7 @@ dev_arista01:
       ansible_host: 172.20.20.2
     a01-dev-rtr2:
       ansible_host: 172.20.20.3
+
 prod_arista01:
   hosts:
     a01-prod-rtr1:

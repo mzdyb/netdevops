@@ -1,0 +1,3 @@
+---
+- name: Test network connectivity
+  ansible.builtin.include_tasks: connectivity.yml

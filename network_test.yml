@@ -1,0 +1,20 @@
+---
+- name: Test Arista infrastructure
+  hosts: dev_arista01
+  gather_facts: false
+
+  pre_tasks:
+    - name: Include configuration variables
+      ansible.builtin.include_vars:
+        dir: "{{ config_vars }}"
+
+  roles:
+    - network_testing_arista
+
+
+- name: Test clients connectivity
+  hosts: labhost
+  gather_facts: false
+
+  roles:
+    - network_testing_clients

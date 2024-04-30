@@ -1,5 +1,4 @@
 ---
-infra_path: dev_infra/arista01
 config_template: "{{ infra_path }}/{{ inventory_hostname }}/templates/{{ inventory_hostname }}.j2"
 config_vars: "{{ infra_path }}/{{ inventory_hostname }}/config_vars"
-topology_file: "{{ infra_path }}/dev_arista01.clab.yml"
+

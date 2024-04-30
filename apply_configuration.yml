@@ -1,0 +1,13 @@
+---
+
+- name: Configure network devices from SoT
+  hosts: dev_arista01
+  gather_facts: false
+
+  pre_tasks:
+    - name: Include configuration variables
+      ansible.builtin.include_vars:
+        dir: "{{ config_vars }}"
+
+  roles:
+    - apply_configuration_from_sot

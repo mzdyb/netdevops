@@ -1,0 +1,10 @@
+---
+- name: Manage network infrastructure with clab
+  hosts: labhost
+  gather_facts: false
+  vars:
+    mode: deploy    # Default action to deploy network topology, use 'destroy' to destroy topology
+
+
+  roles:
+    - create_infrastructure
