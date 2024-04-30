@@ -5,6 +5,5 @@
   vars:
     mode: deploy    # Default action to deploy network topology, use 'destroy' to destroy topology
 
-
   roles:
     - create_infrastructure

@@ -1,5 +1,4 @@
 ---
-
 - name: Configure network devices from SoT
   hosts: dev_arista01
   gather_facts: false
