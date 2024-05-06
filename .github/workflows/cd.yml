@@ -13,6 +13,6 @@ jobs:
     - name: Invoke deployment to prod hook
       uses: distributhor/workflow-webhook@v3
       with:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
+        webhook_url: ${{ secrets.WEBHOOK_URL_CD }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         verify_ssl: false
