@@ -1,6 +1,7 @@
 ---
 - name: Configure network devices from SoT
-  hosts: dev_arista01
+  # hosts defined on AAP
+  hosts: all
   gather_facts: false
 
   pre_tasks:
