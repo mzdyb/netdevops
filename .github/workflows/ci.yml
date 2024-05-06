@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - 'cfg_update*'
+      - 'cfg_update**'
   workflow_dispatch:
 
 jobs:
