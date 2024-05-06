@@ -1,0 +1,36 @@
+---
+- name: Test connectivity between clients
+  hosts: labhost
+  gather_facts: false
+  become: true
+  vars:
+    a01_client1:
+      ip: 192.168.1.2
+      container: clab-dev_arista01-a01-client1
+    a01_client2:
+      ip: 192.168.2.2
+      container: clab-dev_arista01-a01-client2
+
+
+  tasks:
+    - name: Ping client node
+      ansible.builtin.command:
+        cmd: docker exec {{ a01_client1.container }} ping -c 5 {{ a01_client2.ip }}
+      register: ping_result
+      ignore_errors: true
+      changed_when: false
+
+    - name: Ping output
+      ansible.builtin.debug:
+        msg: "{{ ping_result.stdout.split('\n')  }}"
+
+    - name: Extract packet loss
+      ansible.builtin.set_fact:
+        packet_loss: "{{ ping_result | regex_search('(\\d+)% packet loss') | regex_search('(\\d+\\.?\\d*)') }}"
+
+    - name: Verify ping results
+      ansible.builtin.assert:
+        that:
+          - "{{ packet_loss | float }} == 0"
+        fail_msg: "Ping failed"
+        success_msg: "Ping successful"

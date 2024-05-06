@@ -1,7 +1,7 @@
 ---
 - name: Ping client node
   ansible.builtin.command:
-    cmd: docker exec {{ a01_client1.container }} ping -c 5 {{ a01_client2.ip }}
+    cmd: docker exec {{ a01_client1_container }} ping -c 5 {{ a01_client2_ip }}
   register: ping_result
   ignore_errors: true
   changed_when: false

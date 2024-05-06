@@ -1,32 +1,33 @@
 ---
-- name: Configure network devices from SoT
+- name: Test Arista infrastructure
   hosts: dev_arista01
   gather_facts: false
 
   pre_tasks:
-    - name: Check topology type
-      ansible.builtin.set_fact:
-        topology_type: "{{ group_names[1].split('_')[0] }}"
-
-    - name: Set config paths for SoT in case of dev topology
+    - name: Set config paths for SoT for dev topology
       ansible.builtin.set_fact:
         config_template: "{{ infra_path }}/{{ inventory_hostname | replace('dev', 'prod') }}/templates/{{ inventory_hostname | replace('dev', 'prod') }}.j2"
         config_vars: "{{ infra_path }}/{{ inventory_hostname | replace('dev', 'prod') }}/config_vars"
-      when: topology_type == 'dev'
 
     - name: Include SoT configuration variables
       ansible.builtin.include_vars:
         dir: "{{ config_vars }}"
 
-    - name: Adjust SoT in case of dev topology
+    - name: Adjust SoT for dev topology
       ansible.builtin.include_vars:
         file: "{{ infra_path }}/dev/{{ inventory_hostname }}"
-      when: topology_type == 'dev'
-
-
 
   roles:
-    - apply_configuration_from_sot
+    - network_testing_arista
 
 
 
+- name: Test clients connectivity
+  hosts: labhost
+  gather_facts: false
+
+  roles:
+    - role: network_testing_clients
+      vars:
+        a01_client1_container: clab-dev_arista01-a01-dev-client1
+        a01_client2_container: clab-dev_arista01-a01-dev-client2

@@ -1,10 +1,10 @@
 ---
 - name: Test Arista infrastructure
-  hosts: dev_arista01
+  hosts: prod_arista01
   gather_facts: false
 
   pre_tasks:
-    - name: Include configuration variables
+    - name: Include SoT configuration variables
       ansible.builtin.include_vars:
         dir: "{{ config_vars }}"
 
@@ -12,9 +12,13 @@
     - network_testing_arista
 
 
+
 - name: Test clients connectivity
   hosts: labhost
   gather_facts: false
 
   roles:
-    - network_testing_clients
+    - role: network_testing_clients
+      vars:
+        a01_client1_container: clab-prod_arista01-a01-prod-client1
+        a01_client2_container: clab-prod_arista01-a01-prod-client2

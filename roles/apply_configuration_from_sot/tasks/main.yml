@@ -20,4 +20,3 @@
   ansible.builtin.debug:
     msg: "No configuration changes introduced"
   when: not config_output.changed
-

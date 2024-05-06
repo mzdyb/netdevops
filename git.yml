@@ -1,0 +1,16 @@
+---
+- name: git tests
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Get hash of last commit on the main branch
+      git:
+        repo: https://github.com/mzdyb/netdevops.git
+        dest: /home/mzdyb/git/netdevops
+        version: main
+      register: last_commit
+
+
+    - debug:
+        msg: "{{ last_commit  }}"

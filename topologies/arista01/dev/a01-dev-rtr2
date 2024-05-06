@@ -1,0 +1,34 @@
+---
+# Adjust SoT for dev topology
+hostname: a01-dev-rtr2
+
+interfaces:
+- name: Ethernet1
+  description: to-a01-prod-rtr1
+  ipv4_address: 10.0.0.2/30
+  switchport: false
+  shutdown: false
+
+- name: Ethernet2
+  description: to-a01-prod-client2
+  ipv4_address: 192.168.2.1/24
+  switchport: false
+  shutdown: false
+
+- name: Loopback0
+  ipv4_address: 172.16.0.2/32
+  shutdown: false
+
+- name: Management0
+  description: mgmt
+  ipv4_address: 172.200.20.3/24
+  ipv6_address: 2001:172:200:20::3/64
+  shutdown: false
+
+static_routes_ipv4:
+- dest: 0.0.0.0/0
+  next_hop: 172.200.20.1
+
+static_routes_ipv6:
+- dest: ::/0
+  next_hop: 2001:172:200:20::1

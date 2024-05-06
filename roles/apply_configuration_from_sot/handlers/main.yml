@@ -1,4 +1,4 @@
----    
+---
 - name: Backup running config after changes
   arista.eos.eos_config:
     backup: true
@@ -6,11 +6,12 @@
       dir_path: /tmp/backups/{{ inventory_hostname }}/post_changes
   listen: backup post_changes
 
-- name: Copy backups from EE to {{ inventory_hostname }}
+- name: Copy backups from EE to labhost
   ansible.builtin.copy:
     src: /tmp/backups/
     dest: /tmp/backups
     mode: preserve
+  delegate_to: labhost
   listen: copy backup
 
 - name: Show configuration changes
