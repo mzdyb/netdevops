@@ -1,4 +1,5 @@
 ---
+topology_type: prod
 infra_path: topologies/arista01
 topology_file: "{{ infra_path }}/prod_arista01.clab.yml"
 config_template: "{{ infra_path }}/{{ inventory_hostname }}/templates/{{ inventory_hostname }}.j2"
