@@ -21,7 +21,6 @@
     - network_testing_arista
 
 
-
 - name: Test clients connectivity
   hosts: labhost
   gather_facts: false

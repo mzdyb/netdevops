@@ -1,3 +1,4 @@
 ---
+topology_type: dev
 infra_path: topologies/arista01
 topology_file: "{{ infra_path }}/dev_arista01.clab.yml"
