@@ -6,7 +6,7 @@
   gather_facts: false
 
   roles:
-    - role: '../roles/create_infrastructure'
+    - role: create_infrastructure
       vars:
         mode: deploy
         topology_file: topologies/arista01/dev_arista01.clab.yml

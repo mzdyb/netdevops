@@ -6,7 +6,7 @@
 
 - name: Copy topology file to {{ inventory_hostname }}
   ansible.builtin.copy:
-    src: "../{{ topology_file }}"
+    src: "{{ topology_file }}"
     dest: /tmp/{{ topology_file }}/
     mode: preserve
 
