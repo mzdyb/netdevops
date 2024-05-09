@@ -1,0 +1,19 @@
+---
+- name: Test Arista infrastructure in dev
+  hosts: dev_arista01
+  gather_facts: false
+
+  roles:
+    - set_sot_variables
+    - network_testing_arista
+
+
+- name: Test clients connectivity
+  hosts: labhost
+  gather_facts: false
+
+  roles:
+    - role: network_testing_clients
+      vars:
+        a01_client1_container: clab-dev_arista01-a01-dev-client1
+        a01_client2_container: clab-dev_arista01-a01-dev-client2

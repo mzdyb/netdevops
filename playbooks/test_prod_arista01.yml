@@ -1,14 +1,10 @@
 ---
-- name: Test Arista infrastructure
+- name: Test Arista infrastructure in prod
   hosts: prod_arista01
   gather_facts: false
 
-  pre_tasks:
-    - name: Include SoT configuration variables
-      ansible.builtin.include_vars:
-        dir: "{{ config_vars }}"
-
   roles:
+    - set_sot_variables
     - network_testing_arista
 
 

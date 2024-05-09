@@ -1,0 +1,25 @@
+---
+- name: Revert SoT changes in main branch
+  hosts: labhost
+  gather_facts: false
+
+  tasks:
+    - name: Clone repository to {{ inventory_hostname }}
+      ansible.builtin.git:
+        repo: https://github.com/mzdyb/netdevops.git
+        dest: /tmp/netdevops/
+        update: true
+        clone: true
+
+    - name: Revert to state before merging changes to main branch
+      ansible.builtin.command:
+        cmd: git revert -m 1 HEAD --no-edit
+      args:
+        chdir: /tmp/netdevops
+
+    - name: Push main branch state to remote after reverting changes
+      ansible.builtin.command:
+        cmd: git push
+      args:
+        chdir: /tmp/netdevops
+      register: git_push

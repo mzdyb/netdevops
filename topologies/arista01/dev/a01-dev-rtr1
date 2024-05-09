@@ -1,5 +1,6 @@
 ---
-# Adjust SoT for dev topology
+# Adjust SoT for dev topology, the idea here is not to have separate SoTs for dev and prod, only adjust hostname and allow connectivity do dev nodes
+# Simple vars overwriting just for demo purposes so some vars are redundant here
 hostname: a01-dev-rtr1
 
 interfaces:
@@ -18,7 +19,7 @@ interfaces:
 - name: Loopback0
   ipv4_address: 172.16.0.1/32
   shutdown: false
-  
+
 - name: Management0
   description: mgmt
   ipv4_address: 172.200.20.2/24

@@ -1,0 +1,8 @@
+---
+- name: Configure network devices from SoT
+  hosts: dev_arista01, prod_arista01
+  gather_facts: false
+
+  roles:
+    - '../roles/set_sot_variables'
+    - '../roles/apply_configuration_from_sot'

@@ -1,0 +1,12 @@
+# Default action is to deploy network topology, use mode: destroy to destroy topology
+# Provide your topology file when running playbook via -e parameter or AAP Survey
+---
+- name: Manage network infrastructure with clab
+  hosts: labhost
+  gather_facts: false
+
+  roles:
+    - role: '../roles/create_infrastructure'
+      vars:
+        mode: deploy
+        topology_file: topologies/arista01/dev_arista01.clab.yml
