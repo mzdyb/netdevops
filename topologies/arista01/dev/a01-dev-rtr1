@@ -1,6 +1,7 @@
 ---
-# Adjust SoT for dev topology, the idea here is not to have separate SoTs for dev and prod, only adjust hostname and allow connectivity do dev nodes
+# Adjust SoT for dev topology, the idea here is to not have separate SoTs for dev and prod, only adjust hostname and allow connectivity do dev nodes (mgmt interface and static routes)
 # Simple vars overwriting just for demo purposes so some vars are redundant here
+
 hostname: a01-dev-rtr1
 
 interfaces:
