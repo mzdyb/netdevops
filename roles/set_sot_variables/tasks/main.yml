@@ -1,0 +1,17 @@
+---
+- name: Include SoT variables
+  ansible.builtin.include_vars:
+    file: "{{ item }}"
+  with_fileglob:
+    - topologies/arista01/{{ inventory_hostname | replace('dev', 'prod') }}/config_vars/*
+  register: results
+
+- name: Include SoT variables in case of dev topology
+  ansible.builtin.include_vars:
+    file: "{{ infra_path }}/dev/{{ inventory_hostname }}"
+  when: topology_type == 'dev'
+
+- name: Set SoT template path in case of dev topology
+  ansible.builtin.set_fact:
+    config_template: "{{ infra_path }}/{{ inventory_hostname | replace('dev', 'prod') }}/templates/{{ inventory_hostname | replace('dev', 'prod') }}.j2"
+  when: topology_type == 'dev'
