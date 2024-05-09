@@ -4,5 +4,5 @@
   gather_facts: false
 
   roles:
-    - '../roles/set_sot_variables'
-    - '../roles/apply_configuration_from_sot'
+    - role: '../roles/set_sot_variables'
+    - role: '../roles/apply_configuration_from_sot'
