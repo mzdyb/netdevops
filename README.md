@@ -18,3 +18,9 @@ Developement Network:
 
 ## Workflow
 ...
+
+
+## Authors
+
+- [@mzdyb](https://www.github.com/mzdyb)
+
