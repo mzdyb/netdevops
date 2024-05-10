@@ -17,10 +17,10 @@ Developement Network:
 
 
 ## Workflow
-...
+The core idea here is that GitHub is the Source of True for our network and any changes to the network are performed from Git. The Production network configuration is represented by main rep branch and whenever we want to add configuration change new branch should be created. The new branch's name should start with 'cfg_updates' string.
 
 
-## Authors
+## Author
 
 [@mzdyb](https://www.github.com/mzdyb)
 
