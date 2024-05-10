@@ -6,6 +6,8 @@ This project shows the example how can we automate network configuration using A
 
 ## Network environment
 
-Environment consists of two separate networks: Developement and Production. They have the same infrastructure and configurations
+Environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need of two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device we are using) and Management interface's IP and static routes allowing connectivity Developement network.
+
+
 ## Workflow
 ...
