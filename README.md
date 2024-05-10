@@ -37,7 +37,11 @@ It consists of three stages:
 3. Testing
 
 **CD pipeline**  
-When the new configuration has been tested sucessfully network engineer may want to deploy these changes to Production network. In this case Pull Request should be created in GitHub 
+
+When the new configuration has been tested sucessfully network engineer may want to deploy these changes to Production network. In this case Pull Request should be created in GitHub:
+1. Create Pull Request
+2. Review configuration changes
+3. Approve Pull Request (merge changes to main branch and close Pull Request)
 
 ...  
 ...  
