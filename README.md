@@ -1,4 +1,4 @@
-ork# NetDevOps with Ansible Automation Platform
+# NetDevOps with Ansible Automation Platform
 
 This project shows the example how can we automate network configuration using Ansible Automation Platform and CI/CD approach. The core assumption here is that we are moving Source of True for our network configuration to GitHub. Devices configurations are defined by configuration variables in yaml files and by configuration logic scripted in jinja2 files. To generate configurations and apply them to devices Ansible network config module is used.
 
@@ -21,7 +21,7 @@ The core idea here is that GitHub is the Source of True for our network and any 
 
 **CI pipeline**
 
-Whenever we want to add configuration change int the network the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action CI which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
+Whenever we want to add configuration change int the network the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action 'CI' which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
 
     git checkout -b cfg_updates_bgp_updates
     git commit - m 'added new prefix'
@@ -34,6 +34,9 @@ It consists of three stages:
 1. Synchronize SoT to have the latest repo version
 2. Configure Developement network with configuration from 'cfg_updates_bgp_updates' branch
 3. Testing
+
+**CD pipeline**
+When the new configuration has been tested sucessfully network engineer may want to deploy these changes to Production network. In this case Pull Request should be created in GitHub 
 
 ...  
 ...  
