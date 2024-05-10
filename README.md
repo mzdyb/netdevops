@@ -35,13 +35,26 @@ It consists of three stages:
 1. Synchronize SoT to have the latest repo version
 2. Configure Developement network with configuration from 'cfg_updates_bgp_updates' branch
 3. Testing
-
+  
+  
 **CD pipeline**  
 
 When the new configuration has been tested sucessfully network engineer may want to deploy these changes to Production network. In this case Pull Request should be created in GitHub:
+
 1. Create Pull Request
-2. Review configuration changes
+
+![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/8caab6c5-a408-4c65-b156-27169195a057)
+ 
+2. Review configuration changes in Pull Request
+   
+![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/9dcc77e0-64a8-42db-8f49-7a148f9f802a)
+
+   
 3. Approve Pull Request (merge changes to main branch and close Pull Request)
+
+![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/a3865106-21b9-45e1-865b-20d5d2f8a1b8)
+
+
 
 ...  
 ...  
