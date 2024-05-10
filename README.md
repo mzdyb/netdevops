@@ -1,4 +1,4 @@
-# NetDevOps with Ansible Automation Platform
+ork# NetDevOps with Ansible Automation Platform
 
 This project shows the example how can we automate network configuration using Ansible Automation Platform and CI/CD approach. The core assumption here is that we are moving Source of True for our network configuration to GitHub. Devices configurations are defined by configuration variables in yaml files and by configuration logic scripted in jinja2 files. To generate configurations and apply them to devices Ansible network config module is used.
 
@@ -32,7 +32,7 @@ Below we can see CI Workflow created on Ansible Automation Platform:
 
 It consists of three stages:
 1. Synchronize SoT to have the latest repo version
-2. Configure Developement with configuration from 'cfg_updates_bgp_updates' branch
+2. Configure Developement network with configuration from 'cfg_updates_bgp_updates' branch
 3. Testing
 
 ...  
