@@ -22,5 +22,5 @@ Developement Network:
 
 ## Authors
 
-- [@mzdyb](https://www.github.com/mzdyb)
+[@mzdyb](https://www.github.com/mzdyb)
 
