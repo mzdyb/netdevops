@@ -19,9 +19,15 @@ Developement Network:
 ## Workflow
 The core idea here is that GitHub is the Source of True for our network and any changes to the network are performed from Git. The Production network configuration is represented by main branch. 
 
-- CI pipeline
+**CI pipeline**
 
-Whenever we want to add configuration change the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action CI which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
+Whenever we want to add configuration change int the network the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action CI which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
+
+    git checkout -b cfg_updates_bgp_updates
+    git commit - m 'added new prefix'
+    git push -u origin cfg_updates_bgp_updates
+
+
 
 
 ...  
@@ -29,5 +35,5 @@ Whenever we want to add configuration change the new branch should be created. T
 
 ## Author
 
-[@mzdyb](https://www.github.com/mzdyb)
+[@mzdyb](https://www.linkedin.com/in/michal-zdyb-9aa4046/)
 
