@@ -6,7 +6,7 @@ This project shows the example how can we automate network configuration using A
 
 ## Network environment
 
-Environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need for two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
+Our environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need for two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
   
 Production Network:  
 ![a01-prod](https://github.com/mzdyb/netdevops/assets/49950423/ca8ca593-66c2-4054-b994-69f7f22ff288)
@@ -27,8 +27,13 @@ Whenever we want to add configuration change int the network the new branch shou
     git commit - m 'added new prefix'
     git push -u origin cfg_updates_bgp_updates
 
+Below we can see CI Workflow created on Ansible Automation Platform:
+![AAP_CI_workflow](https://github.com/mzdyb/netdevops/assets/49950423/777cf07c-6f78-424a-94c0-b065bae1e76d)
 
-
+It consists of three stages:
+1. Synchronize SoT to have the latest repo version
+2. Configure Developement with configuration from 'cfg_updates_bgp_updates' branch
+3. Testing
 
 ...  
 ...  
