@@ -4,7 +4,7 @@ bgp:
   router_id: 172.16.0.1
   neighbors:
     - ip_address: 10.0.0.2
-      remote_as: "64513"
+      remote_as: "64514"
       description: a01-prod-rtr2
   networks:
     - prefix: 192.168.1.0/24
