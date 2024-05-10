@@ -6,7 +6,13 @@ This project shows the example how can we automate network configuration using A
 
 ## Network environment
 
-Environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need of two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device we are using) and Management interface's IP and static routes allowing connectivity Developement network.
+Environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need of two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device we are using) and Management interface's IP and static routes allowing connectivity Developement network.  
+  
+Developement Network:  
+![a01-dev](https://github.com/mzdyb/netdevops/assets/49950423/ef10f61e-c031-4e5c-af29-f3d276da5be7)
+
+Production Network:  
+![a01-prod](https://github.com/mzdyb/netdevops/assets/49950423/71b64fab-5671-4e49-829b-a05121719f67)
 
 
 ## Workflow
