@@ -1,12 +1,12 @@
 # NetDevOps with Ansible Automation Platform
 
-This project shows the example of how can we automate network configuration using Ansible Automation Platform and CI/CD approach. The core assumption here is that we are moving Source of True for our network configuration to GitHub. Devices configurations are defined by configuration variables in yaml files and by configuration logic scripted in jinja2 files. To generate configurations and apply them to devices Ansible network config module is used.
+This project shows the example of how can we automate network configuration using Ansible Automation Platform and CI/CD approach. The core assumption here is that we are moving Source of True for our network configuration to GitHub. Devices configurations are defined by configuration variables in yaml files and by configuration logic scripted in jinja2 files. To generate configurations and apply them to devices Ansible network config module is used. I am using here intended configuration approach which means that whole device's configuration is generated before pushing it to device. Ansible config module (eos_config in this case) by using internal NOS diff mechanism applies only the config diff (so idempotency is ensured meaning no configuration overwriting happens).
 
 
 
 ## Network environment
 
-Our environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developament and Production networks is used to avoid the need for two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
+In this case environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developement and Production networks is used to avoid the need for two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
   
 Production Network:  
 ![a01-prod](https://github.com/mzdyb/netdevops/assets/49950423/ca8ca593-66c2-4054-b994-69f7f22ff288)
@@ -45,15 +45,19 @@ When the new configuration has been tested sucessfully network engineer may want
 
 ![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/8caab6c5-a408-4c65-b156-27169195a057)
  
-2. Review configuration changes in Pull Request
+2. Review configuration changes in Pull Request (in this example prefix 192.168.100.0/24 has been added)
    
 ![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/9dcc77e0-64a8-42db-8f49-7a148f9f802a)
 
    
-3. Approve Pull Request (merge changes to main branch and close Pull Request)
+3. Merge changes to main branch and close Pull Request
 
 ![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/a3865106-21b9-45e1-865b-20d5d2f8a1b8)
 
+When Pull Request is merged and closed GitHub action 'CD' is triggered which in turn uses webhook to trigger CD Workflow template on Ansible Automation Platform:
+![AAP_CD_workflow](https://github.com/mzdyb/netdevops/assets/49950423/58882b63-c026-43f9-9d74-70879ea556a0)
+
+As we can see this is the classic network deployment approach with pre-checks, configuration changes, post-checks and possible rollback but with the major difference: here everything is fully automated. The crucial part of implementing network configuration changes is creating backup and rollback plan. In this case backup of running configuration is created as a part of 'configure prod network' block so is not shown in the above workflow. But because we moved SoT for our network to Git we don't even have to use this backup because we have fully tracked and version controlled configuration on GitHub. So rollback in this case means reverting main branch to commit before merging changes from 'cfg_updates_bgp_updates' branch and applying configuration state from this commit.
 
 
 ...  
