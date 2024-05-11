@@ -57,11 +57,20 @@ When the new configuration has been tested sucessfully network engineer may want
 When Pull Request is merged and closed GitHub action 'CD' is triggered which in turn uses webhook to trigger CD Workflow template on Ansible Automation Platform:
 ![AAP_CD_workflow](https://github.com/mzdyb/netdevops/assets/49950423/58882b63-c026-43f9-9d74-70879ea556a0)
 
-As we can see this is the classic network deployment approach with pre-checks, configuration changes, post-checks and possible rollback but with the major difference: here everything is fully automated. The crucial part of implementing network configuration changes is creating backup and rollback plan. In this case backup of running configuration is created as a part of 'configure prod network' block so is not shown in the above workflow. But because we moved SoT for our network to Git we don't even have to use this backup because we have fully tracked and version controlled configuration on GitHub. So rollback in this case means reverting main branch to commit before merging changes from 'cfg_updates_bgp_updates' branch and applying configuration state from this commit.
+As we can see this is the classic network deployment approach with pre-checks, configuration changes, post-checks and possible rollback but with the major difference: here everything is fully automated. The crucial part of implementing network configuration changes is creating backup and rollback plan. In this case backup of running configuration is created as a part of 'configure prod network' template so is not shown in the above workflow. But because we moved SoT for our network to Git we don't even have to use this backup because we have fully tracked and version controlled configuration on GitHub. So rollback in this case means reverting main branch to commit before merging changes from 'cfg_updates_bgp_updates' branch and applying configuration state from this commit.
 
+**Notifications**  
+Each template in both workflows has Notification functionality enabled on Ansible Automation Platform. It means that the target audience (for example a group of network engineers and service managers) can be informed about the status of every step in the workflow. I am using here Slack bots app, see below the example of automated messages sent from Ansible Automation Platform to #netdevops Slack channel informing about every step of CI and CD workflows:
+![slack](https://github.com/mzdyb/netdevops/assets/49950423/be27c5cb-c179-45a1-9fc6-b9c5af04ac68)
 
+  
 ...  
 ...  
+...
+
+## Final Remarks
+
+
 
 ## Author
 
