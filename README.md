@@ -63,6 +63,9 @@ As we can see this is the classic network deployment approach with pre-checks, c
 Each template in both workflows has Notification functionality enabled on Ansible Automation Platform. It means that the target audience (for example a group of network engineers and service managers) can be informed about the status of every step in the workflow. I am using here Slack bots app, see below the example of automated messages sent from Ansible Automation Platform to #netdevops Slack channel informing about every step of CI and CD workflows:
 ![slack](https://github.com/mzdyb/netdevops/assets/49950423/be27c5cb-c179-45a1-9fc6-b9c5af04ac68)
 
+
+**Testing**  
+It this example we are implementing simple configuration change which is adding local prefix 192.168.100.0/24 to BGP process. It doesn't bring any new functionality to the network just shows the process of introducing new configuration to devices during CI and CD phases. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if BGP session between routers is in Established state, in Linux clients we are veryfying connectivity with ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
   
 ...  
 ...  
