@@ -6,7 +6,7 @@ This project shows the example of how can we automate network configuration usin
 
 ## Network environment
 
-In this case environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developement and Production networks is used to avoid the need for two separate SoTs synchronization. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
+In this case environment consists of two separate networks: Developement and Production. They have the same topologies and configurations. The same SoT for both Developement and Production networks is used to avoid the need for synchronization of two separate SoTs. But in case of Developament network there is adjustment of hostnames (for better visibility which device are we using) and Management interface's IP and static routes allowing connectivity to Developement network. Networks are implemented using Containerlab and consist of two Arista routers and two Linux clients
   
 Production Network:  
 ![a01-prod](https://github.com/mzdyb/netdevops/assets/49950423/ca8ca593-66c2-4054-b994-69f7f22ff288)
