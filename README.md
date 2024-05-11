@@ -29,7 +29,8 @@ Whenever we want to add configuration change int the network the new branch shou
     git push -u origin cfg_updates_bgp_updates
 
 Below we can see CI Workflow created on Ansible Automation Platform:
-![AAP_CI_workflow](https://github.com/mzdyb/netdevops/assets/49950423/777cf07c-6f78-424a-94c0-b065bae1e76d)
+![AAP_CI_workflow](https://github.com/mzdyb/netdevops/assets/49950423/ef7a2ac2-fce6-4b51-8dbb-1395dba8aa95)
+
 
 It consists of three stages:
 1. Synchronize SoT to have the latest repo version
