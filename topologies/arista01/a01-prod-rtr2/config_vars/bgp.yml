@@ -5,6 +5,6 @@ bgp:
   neighbors:
     - ip_address: 10.0.0.1
       remote_as: "64512"
-      description: a01-rtr1
+      description: a01-prod-rtr1
   networks:
     - prefix: 192.168.2.0/24
