@@ -1,0 +1,15 @@
+---
+- name: Collect ip route table
+  arista.eos.eos_command:
+    commands:
+      - command: show ip route
+        output: json
+  register: route_table_output
+
+- name: Find prefix in route table
+  ansible.builtin.assert:
+    that:
+      - route_table_output.stdout[0].vrfs.default is defined
+      - route_table_output.stdout[0].vrfs.default.routes['{{ route }}'] is defined
+    fail_msg: Route {{ route }} is not present in routing table on {{ inventory_hostname }}
+    success_msg: Route {{ route }} is present in routing table on {{ inventory_hostname }}

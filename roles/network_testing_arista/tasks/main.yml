@@ -1,3 +1,6 @@
 ---
 - name: Test BGP status
   ansible.builtin.include_tasks: bgp_status.yml
+
+- name: Find route
+  ansible.builtin.include_tasks: find_route.yml

@@ -4,9 +4,10 @@
   gather_facts: false
 
   roles:
-    - set_sot_variables
-    - network_testing_arista
-
+    - role: set_sot_variables
+    - role: network_testing_arista
+      vars:
+        route: 172.16.0.100/32
 
 - name: Test clients connectivity
   hosts: labhost
