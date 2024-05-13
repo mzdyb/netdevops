@@ -25,7 +25,7 @@ Whenever we want to add configuration change int the network the new branch shou
 
     git checkout -b cfg_updates_bgp_updates
     git add topologies/arista01/a01-prod-rtr1/config_vars/bgp.yml
-    git commit -m 'added prefix 192.168.100.0/24 to bgp'
+    git commit -m 'added prefix 172.16.0.0/24 to bgp'
     git push -u origin cfg_updates_bgp_updates
 
 Below we can see CI Workflow created on Ansible Automation Platform:
@@ -44,16 +44,18 @@ When the new configuration has been tested sucessfully network engineer may want
 
 1. Create Pull Request
 
-![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/8caab6c5-a408-4c65-b156-27169195a057)
+![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/7f30a93c-cd6f-43e1-8014-fe3b54cc4e50)
+
  
-2. Review configuration changes in Pull Request (in this example prefix 192.168.100.0/24 has been added)
+2. Review configuration changes in Pull Request (in this example prefix 172.16.0.0/24 has been added)
    
-![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/9dcc77e0-64a8-42db-8f49-7a148f9f802a)
+![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/3632d4d9-ed17-4034-a986-a96ff42d1135)
 
    
 3. Merge changes to main branch and close Pull Request
 
-![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/a3865106-21b9-45e1-865b-20d5d2f8a1b8)
+![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/5d5f1eca-7e30-48c1-bfc7-a0d39e6e85f7)
+
 
 When Pull Request is merged and closed GitHub action 'CD' is triggered which in turn uses webhook to trigger CD Workflow template on Ansible Automation Platform:
 ![AAP_CD_workflow](https://github.com/mzdyb/netdevops/assets/49950423/58882b63-c026-43f9-9d74-70879ea556a0)
@@ -66,7 +68,7 @@ Each template in both workflows has Notification functionality enabled on Ansibl
 
 
 **Testing**  
-It this example we are implementing simple configuration change which is adding prefix 192.168.100.0/24 to BGP process. It doesn't bring any new functionality to the network just shows the process of introducing new configuration to devices during CI and CD phases. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if BGP session between routers is in Established state, in Linux clients we are veryfying connectivity with ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
+It this example we are implementing simple configuration change which is adding prefix 122.16.0.0/24 to BGP process. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if the new prefix has been added to the routing table and if BGP session between routers is in Established state. Witn Linux clients we are veryfying connectivity using ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
   
 ...  
 ...  
