@@ -76,8 +76,9 @@ This project shows the example of NetDevOps use case which is moving SoT to GitH
 
 There is a tendency in the industry to call workflows with SoT moved to GitHub as 'GitOps' but one of the core principles of GitOps is that infrastructure/configuration should be continuously reconciled. This is not the case with workflows I am presenting here so I am not calling this approach GitOps. Continuous reconciliation might be implemented with Event-Driven Ansible and AAP Scheduler but this is the topic for another project.
 
+
 ## Feedback
-Feedback is always welcome! If you have any feedback, please reach me out
+Feedback is always welcome! If you have any comments, please reach me out
 
 ## Author
 
