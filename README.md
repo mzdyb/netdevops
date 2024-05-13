@@ -21,7 +21,7 @@ The core idea here is that GitHub is the Source of True for our network and any 
 
 **CI pipeline**
 
-Whenever we want to add configuration change int the network the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action 'CI' which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
+Whenever we want to add configuration change in the network the new branch should be created. The new branch's name should start with 'cfg_updates' string. After staging and commiting changes we are pushing them to GitHub. When the name of branch starts with 'cfg_updates' push event triggers GitHub action 'CI' which in turn uses webhook to trigger CI Workflow template on Ansible Automation Platform.
 
     git checkout -b cfg_updates_bgp_updates
     git add topologies/arista01/a01-prod-rtr1/config_vars/bgp.yml
