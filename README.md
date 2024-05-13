@@ -76,6 +76,7 @@ This project shows the example of NetDevOps use case which is moving SoT to GitH
 
 There is a tendency in the industry to call workflows with SoT moved to GitHub as 'GitOps' but one of the core principles of GitOps is that infrastructure/configuration should be continuously reconciled. This is not the case with workflows I am presenting here so I am not calling this approach GitOps. Continuous reconciliation might be implemented with Event-Driven Ansible and AAP Scheduler but this is the topic for another project.
 
+I am using here intended configuration approach here which requires to script whole configuration with jinja2. We can reduce the number of j2 files by rendering some sections of configuration with [Network Resource Modules](https://docs.ansible.com/ansible/latest/network/user_guide/network_resource_modules.html#network-resource-modules). I will add this approach to the project in the future.
 
 ## Feedback
 Feedback is always welcome! If you have any comments, please reach me out
