@@ -68,14 +68,13 @@ Each template in both workflows has Notification functionality enabled on Ansibl
 
 
 **Testing**  
-It this example we are implementing simple configuration change which is adding prefix 122.16.0.0/24 to BGP process. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if the new prefix has been added to the routing table and if BGP session between routers is in Established state. Witn Linux clients we are veryfying connectivity using ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
+It this example we are implementing simple configuration change which is adding prefix 172.16.0.0/24 to BGP process. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if the new prefix has been added to the routing table and if BGP session between routers is in Established state. With Linux clients we are veryfying connectivity using ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
   
-...  
-...  
-...
 
 ## Final Remarks
+This project shows the example of NetDevOps use case which is moving SoT to GitHub and use automated testing and deployment of configuration changes. It should not be confused with full CI/CD workflow like we have in software developement realm. The major challenge in implementing full CI/CD in networking realm is lack of Developement environment which would 1:1 reflect Production environment. Physical lab is very expensive so it is almost never the case to have identical Developement environment like Production and virtual devices are not always available and in practice they don't have identical functionality like their hardware counterparts. Virtual devices are good for emulating control plane but data plane is implemented using ASICs and not all of its functions can be virtualized. But Developement and Production workflows in this example are exactly the workflows which are often used by network engineers in their manual network changes preparation and implementation even if they have access to limited lab. By using the benefit of moving SoT to central place and ansible automation we can automate these workflows and showing the example how it can be done is the purpose of this project.   
 
+There is a tendency in the industry to call workflows with SoT moved to GitHub as 'GitOps' but one of the core principles of GitOps is that infrastructure/configuration should be continuously reconciled. This is not the case with workflows I am presenting here so I am not calling this approach GitOps. Continuous reconciliation might be implemented with Event-Driven Ansible and AAP Scheduler but this is the topic for another project.
 
 
 ## Author
