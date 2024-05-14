@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Launch_deployment_workflow:
+  Launch_CI_workflow:
     runs-on: ubuntu-latest
     steps:
     - name: Invoke testing in dev hook
