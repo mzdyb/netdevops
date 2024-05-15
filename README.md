@@ -25,7 +25,7 @@ Whenever we want to add configuration change in the network the new branch shoul
 
     git checkout -b cfg_updates_bgp_updates
     git add topologies/arista01/a01-prod-rtr1/config_vars/bgp.yml
-    git commit -m 'added prefix 172.16.0.0/24 to bgp'
+    git commit -m 'added prefix 172.16.0.1/32 to bgp'
     git push -u origin cfg_updates_bgp_updates
 
 Below we can see CI Workflow created on Ansible Automation Platform:
@@ -44,17 +44,18 @@ When the new configuration has been tested sucessfully network engineer may want
 
 1. Create Pull Request
 
-![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/7f30a93c-cd6f-43e1-8014-fe3b54cc4e50)
+![create_pull_request](https://github.com/mzdyb/netdevops/assets/49950423/e277cf52-8d6e-4f11-8c7b-ea1a53b6c48b)
 
  
-2. Review configuration changes in Pull Request (in this example prefix 172.16.0.0/24 has been added)
+2. Review configuration changes in Pull Request (in this example prefix 172.16.0.1/32 has been added)
    
-![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/3632d4d9-ed17-4034-a986-a96ff42d1135)
+![review_configuration_changes](https://github.com/mzdyb/netdevops/assets/49950423/ac79e94a-ef22-426e-900b-18f5942762bf)
 
    
 3. Merge changes to main branch and close Pull Request
 
-![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/5d5f1eca-7e30-48c1-bfc7-a0d39e6e85f7)
+![merge_and_close_pr](https://github.com/mzdyb/netdevops/assets/49950423/262b7058-fb26-48d2-bbef-402d12e8914f)
+
 
 
 When Pull Request is merged and closed GitHub action 'CD' is triggered which in turn uses webhook to trigger CD Workflow template on Ansible Automation Platform:
