@@ -1,4 +1,4 @@
-# For pre-checks use --skip-tags postchecks when running this playbook
+# For pre-checks use '--skip-tags postchecks' when running this playbook
 ---
 - name: Test Arista infrastructure in prod
   hosts: prod_arista01
