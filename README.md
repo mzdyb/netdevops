@@ -70,7 +70,7 @@ Each template in both workflows has Notification functionality enabled on Ansibl
 
 
 **Testing**  
-It this example we are implementing simple configuration change which is adding prefix 172.16.0.0/24 to BGP process. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if the new prefix has been added to the routing table and if BGP session between routers is in Established state. With Linux clients we are veryfying connectivity using ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
+It this example we are implementing simple configuration change which is adding prefix 172.16.0.1/32 to BGP process. There are two kinds of testing targets here: the network itself (two Arista container based routers) and two Linux container based clients for traffic simulation. In the network itself we are testing if the new prefix has been added to the routing table and if BGP session between routers is in Established state. With Linux clients we are veryfying connectivity using ping. We can easily verify automated rollback and simulate outage by for example changing BGP AS to incorrect value in main branch before running AAP CD workflow.
   
 
 ## Final Remarks
