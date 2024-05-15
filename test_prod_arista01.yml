@@ -1,3 +1,4 @@
+# For pre-check use --skip-tags postchecks
 ---
 - name: Test Arista infrastructure in prod
   hosts: prod_arista01

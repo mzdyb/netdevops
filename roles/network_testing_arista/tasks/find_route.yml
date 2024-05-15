@@ -13,3 +13,4 @@
       - route_table_output.stdout[0].vrfs.default.routes['{{ route }}'] is defined
     fail_msg: Route {{ route }} is not present in routing table on {{ inventory_hostname }}
     success_msg: Route {{ route }} is present in routing table on {{ inventory_hostname }}
+  tags: postchecks
