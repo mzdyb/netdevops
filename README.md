@@ -66,7 +66,8 @@ As we can see this is the classic network deployment approach with pre-checks, c
 
 **Notifications**  
 Each template in both workflows has Notification functionality enabled on Ansible Automation Platform. It means that the target audience (for example a group of network engineers and service managers) can be informed about the status of every step in the workflow. I am using here Slack bots app, see below the example of automated messages sent from Ansible Automation Platform to #netdevops Slack channel informing about every step of CI and CD workflows:
-![slack](https://github.com/mzdyb/netdevops/assets/49950423/be27c5cb-c179-45a1-9fc6-b9c5af04ac68)
+![slack](https://github.com/mzdyb/netdevops/assets/49950423/5ecf8279-e43a-4f02-95e1-bb0ffbdbe323)
+
 
 
 **Testing**  
