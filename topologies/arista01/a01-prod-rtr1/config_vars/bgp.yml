@@ -8,4 +8,4 @@ bgp:
       description: a01-prod-rtr2
   networks:
     - prefix: 192.168.1.0/24
-    - prefix: 172.16.0.1/32
+  
